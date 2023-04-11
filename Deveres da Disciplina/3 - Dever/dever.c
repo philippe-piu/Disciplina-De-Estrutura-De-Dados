@@ -1,37 +1,8 @@
-/* Tem Erro  Lembrar de encontrar o erro
-(1) Implemente  (em C) um programa para empilhar números inteiros.
-O programa deve funcionar da seguinte forma:
-
-- Recebe em um caractere indicando se empilha ('e') e na linha seguinte o
-número a ser empilhado,
-
-desempilha ('d') e mostra o caractere desempilhado,
-
-imprime ('i') e mostra o estado da pilha
-
-ou sai ('s') e fecha o programa.
-
-Exemplo de entrada:
-
-e
-10
-e
-20
-e
-30
-d
-i
-Saída correspondente:
-desempilhado = 30
-Estado da pilha
-20
-10
-----
-*/
+/*LEMBRETE AINDA NÃO ENCONTREI O ERRO DESSE DEVER*/
 #include<stdio.h>
 #include<stdlib.h>
 
-//Estruturas
+//Estrutura
 typedef struct node
 {
 	//dados
@@ -48,25 +19,55 @@ typedef struct pilha
 	int tamanho;
 } PILHA;
 
-
-//Chamada de funções;
+//Chamada de Funções
 void inicializa(PILHA *p);
 void push(PILHA *p, int valor);
 int pop(PILHA *p);
 void imprime(PILHA *p);
-void menu(PILHA *p);
+void menu();
+void loopmenu(PILHA p);
 
 int main()
 {
 	PILHA p;
 	inicializa(&p);
-	menu(&p);
+	int numero;
+	char opcao;
 
+	do
+	{
+		//Menu
+		menu();
+		scanf(" %c", &opcao);
+		switch(opcao)
+		{
+		case 'e':
+			printf("Informe valor a ser preenchido na Pilha:\n");
+			scanf("%d", &numero);
+			push(&p, numero);
+			break;
+		case 'd':
+				numero = pop(&p);
+			printf("Removendo o %d\n", numero);
+			break;
+		case 'i':
+				imprime(&p);
+			break;
+		case 's':
+				exit(1);
+			break;
+		default:
+			printf("Letra informada esta incorreta\n");
+			break;
+		}
+
+	}
+	while(opcao != 'e' && opcao != 'd' && opcao != 's' && opcao != 'i');
+	
 	return(0);
 }
 
-//Função de Inicialização da pilha
-
+//Função de inicialização da pilha
 void inicializa(PILHA *p)
 {
 	//Tamanho inicial da Pilha 0
@@ -84,7 +85,7 @@ void push(PILHA *p, int valor)
 	if(novo == NULL)
 	{
 		//Mensagem de Pilha Cheia
-		printf("Pilha Cheia");
+		printf("Pilha se encontra cheia\n");
 	}
 	else
 	{
@@ -94,38 +95,36 @@ void push(PILHA *p, int valor)
 		novo->ant = p->topo;
 		//Define topo como nó
 		p->topo = novo;
-		//incrementa tamanho da pilha
+		//Incrementa tamanho da pilha
 		p->tamanho++;
 	}
 }
 
-//Função de remover valores da pilha
+//Função de remoção de valores da pilha
 int pop(PILHA *p)
 {
-	int valor;
 	//Caso a pilha esteja vazia
 	if(p->topo == NULL)
 	{
-		//Mensagem de pilha Vazia
-		printf("Pilha Vazia\n");
+		printf("Pilha esta Vazia\n");
 		return 0;
 	}
 	else
 	{
 		//Cria um auxiliar para topo da pilha
 		NODE *auxiliar = p->topo;
-		//VAriavel recebe o topo
-		valor = (p->topo)->info;
+		//Variavel recebe o topo
+		int valor = (p->topo)->info;
 		//Define o topo com o nó anterior
 		p->topo = (p->topo)->ant;
 		//Libera a memoria
 		free(auxiliar);
-		p ->tamanho--;
-		return (valor);
+		p->tamanho--;
+		return(valor);
 	}
 }
 
-// Função que imprime o estado atual da pilha
+//Função de imprimir a pilha
 void imprime(PILHA *p)
 {
 	printf("Estado da pilha:\n");
@@ -141,45 +140,13 @@ void imprime(PILHA *p)
 	}
 }
 
-
-//Função menu
-void menu(PILHA *p)
+//Função Menu
+void menu()
 {
-	char opcao;
-	int valor;
-	do
-	{
-		//Opção para o usuario
-		printf("Escolha a Oprecao que deseja fazer\n");
-		printf("Opcoes e - Empilha a Pilha\n");
-		printf("Opcoes d - Desempilha a Pilha\n");
-		printf("Opcoes i - Imprime a Pilha\n");
-		printf("Opcoes s - Fecha programa\n");
-		//Leitura da Opção
-		scanf(" %c", &opcao);
-		//Ações apartir da escolha
-		switch(opcao)
-		{
-		case 'e':
-			printf("Informe Valor para a pilha\n");
-			scanf("%d", &valor);
-			push(p, valor);
-			break;
-		case 'd':
-			valor = pop(p);
-			printf("Desenpilha a Pilha\n");
-			break;
-		case 'i':
-			imprime(p);
-			break;
-		case 's':
-			exit(0);
-			break;
-		default:
-			printf("Opcao errada tente de novo\n");
-			break;
-		}
-
-	}
-	while((opcao != 'e') && (opcao != 'd') && (opcao != 'i') && (opcao != 's'));
+	printf("MENU\n");
+	printf("Escolha uma Letra\n");
+	printf("e - Preenche a pilha, d Desempilha a Pilha\n");
+	printf("i - Imprime a pilha, s - Fecha programa\n");
 }
+
+
