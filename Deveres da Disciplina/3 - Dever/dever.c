@@ -150,3 +150,37 @@ void menu()
 }
 
 
+
+/*
+
+(1) Implemente  (em C) um programa para empilhar números inteiros.
+O programa deve funcionar da seguinte forma:
+
+- Recebe em um caractere indicando se empilha ('e') e na linha seguinte o
+número a ser empilhado,
+
+desempilha ('d') e mostra o caractere desempilhado,
+
+imprime ('i') e mostra o estado da pilha
+
+ou sai ('s') e fecha o programa.
+
+Exemplo de entrada:
+
+e
+10
+e
+20
+e
+30
+d
+i
+Saída correspondente:
+desempilhado = 30
+Estado da pilha
+20
+10
+----
+*/
+
+
