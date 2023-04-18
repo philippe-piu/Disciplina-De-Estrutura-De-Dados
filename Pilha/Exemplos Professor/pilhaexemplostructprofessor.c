@@ -1,58 +1,58 @@
-//Exemplo feito pelo professor na Aula Pilha com Alocação dinâmica
+//Exemplo feito pelo professor na Aula Pilha com Alocaï¿½ï¿½o dinï¿½mica
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct node  // Definição de uma estrutura chamada node
+typedef struct node  // Definiï¿½ï¿½o de uma estrutura chamada node
 {
-	char info; // O tipo do dado que será armazenado em um nó é char
-	struct node *ant; // Um ponteiro para o nó anterior da pilha
+	char info; // O tipo do dado que serï¿½ armazenado em um nï¿½ ï¿½ char
+	struct node *ant; // Um ponteiro para o nï¿½ anterior da pilha
 } NODE;
 
-typedef struct pilha  // Definição da estrutura pilha
+typedef struct pilha  // Definiï¿½ï¿½o da estrutura pilha
 {
-	NODE *topo; // Ponteiro para o topo da pilha (último nó adicionado)
-	int tamanho; // Variável para armazenar o tamanho atual da pilha
+	NODE *topo; // Ponteiro para o topo da pilha (ï¿½ltimo nï¿½ adicionado)
+	int tamanho; // Variï¿½vel para armazenar o tamanho atual da pilha
 } PILHA;
 
-void inicializa(PILHA *p)  // Função para inicializar uma pilha
+void inicializa(PILHA *p)  // Funï¿½ï¿½o para inicializar uma pilha
 {
-	p->tamanho = 0; // Tamanho inicial é zero
-	p->topo = NULL; // O topo inicial é nulo (não há nenhum nó na pilha)
+	p->tamanho = 0; // Tamanho inicial ï¿½ zero
+	p->topo = NULL; // O topo inicial ï¿½ nulo (nï¿½o hï¿½ nenhum nï¿½ na pilha)
 }
 
-void push(PILHA *p, char c)  // Função para adicionar um elemento à pilha
+void push(PILHA *p, char c)  // Funï¿½ï¿½o para adicionar um elemento ï¿½ pilha
 {
-	NODE *novo = (NODE *)malloc(sizeof(NODE)); // Aloca memória para um novo nó
+	NODE *novo = (NODE *)malloc(sizeof(NODE)); // Aloca memï¿½ria para um novo nï¿½
 	if(novo == NULL)
 	{
-		printf("Pilha cheia!\n");   // Verifica se a alocação falhou
+		printf("Pilha cheia!\n");   // Verifica se a alocaï¿½ï¿½o falhou
 	}
-	else  // Se a alocação foi bem sucedida:
+	else  // Se a alocaï¿½ï¿½o foi bem sucedida:
 	{
-		novo->info = c; // Armazena o dado no novo nó
-		novo->ant = p->topo; // Faz o ponteiro do novo nó apontar para o topo da pilha (nó anterior)
-		p->topo = novo; // Atualiza o topo da pilha para o novo nó
+		novo->info = c; // Armazena o dado no novo nï¿½
+		novo->ant = p->topo; // Faz o ponteiro do novo nï¿½ apontar para o topo da pilha (nï¿½ anterior)
+		p->topo = novo; // Atualiza o topo da pilha para o novo nï¿½
 		p->tamanho++; // Incrementa o tamanho da pilha
 	}
 }
 
-char pop(PILHA *p)  // Função para remover o elemento do topo da pilha e retornar seu valor
+char pop(PILHA *p)  // Funï¿½ï¿½o para remover o elemento do topo da pilha e retornar seu valor
 {
-	if(p->topo == NULL)  // Verifica se a pilha está vazia
+	if(p->topo == NULL)  // Verifica se a pilha estï¿½ vazia
 	{
 		printf("Pilha vazia!\n"); // Se estiver vazia, imprime uma mensagem de erro
 		return '\0'; // E retorna o caractere nulo
 	}
-	else   // Se a pilha não estiver vazia:
+	else   // Se a pilha nï¿½o estiver vazia:
 	{
 		NODE *aux = p->topo; // Cria um ponteiro auxiliar para o topo da pilha
-		char c = (p->topo)->info; // Armazena o dado do topo da pilha em uma variável
-		p->topo = (p->topo)->ant; // Atualiza o topo da pilha para o nó anterior
-		free(aux); // Libera a memória do nó removido
+		char c = (p->topo)->info; // Armazena o dado do topo da pilha em uma variï¿½vel
+		p->topo = (p->topo)->ant; // Atualiza o topo da pilha para o nï¿½ anterior
+		free(aux); // Libera a memï¿½ria do nï¿½ removido
 		return c; // Retorna o valor do elemento removido
 	}
 }
 
-int main()  // Função principal
+int main()  // Funï¿½ï¿½o principal
 {
 	PILHA container1, container2; // Cria duas pilhas do tipo PILHA
 	inicializa(&container1); // Inicializa a pilha container1
@@ -61,7 +61,7 @@ int main()  // Função principal
 	push(&container2, 'B'); // Adiciona o caractere 'B' na pilha container2
 	printf("CTA=%c\n", pop(&container1)); // Remove e imprime o topo da pilha container1
 	printf("CTB=%c\n", pop(&container2)); // Remove e imprime o topo da pilha container2
-	// Tenta remover outro elemento da segunda pilha (que já está vazia)
+	// Tenta remover outro elemento da segunda pilha (que jï¿½ estï¿½ vazia)
     printf("CTB=%c\n",pop(&container2));
     // Encerra o programa
 	return 0;
