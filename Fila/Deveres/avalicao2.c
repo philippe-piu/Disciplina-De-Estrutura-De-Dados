@@ -24,8 +24,11 @@ typedef struct filaat{
 void filainiciada(Fila *f);
 void preenchimentodafila(Fila *p, int senha, int idade);
 void removerelemento(Fila *f);
+void opcao();
+
 int main(){
-	
+	//função leitura opção
+	opcao();
   
     
 	return(0);
@@ -69,6 +72,7 @@ void preenchimentodafila(Fila *f, int senha, int idade){
 	}
 }
 
+
 //Função de Remoção de Pessoas da fila
 void removerelemento(Fila *f){
 	/*Se minha fila estiver vazia ele vai o olhar se o tamanho que conta quantas pessoas estão na fila 
@@ -86,23 +90,35 @@ void removerelemento(Fila *f){
 	}
 }
 
-//Função de 
 void opcao(){
-	char acao;
-	int senha, idade;
+	char opcao;
 	
-	Fila prioritario;
-	Fila normal
-	//if de opções
-	if(acao == 'i'){
-		//Se idade for maior e igual a 60 ele insere um elemento na fila prioritario se não normal
-		if(idade >=60){
-			preenchimentodafila(&prioritario, &senha, &idade);
-		}else{
-			preenchimentodafila(&normal, &seha, &idade);
-		}
-	}else if(acao == 'r'){
-		op
+	printf("i - insere elementos na fila\n");
+	printf("r - remove elementos da fila\n");
+	
+	//Laço de repetição para caso o usuario erre a letra
+	do{
+    //Leitura das opções de acesso a fila
+     scanf("%c", &opcao);
+	//Se a opção for i insere senha e idade na fila
+	if(opcao == 'i'){
+		
+	}else if(opcao == 'r'){
+		//Se a opção for r remove pessoas da fila
+		
+	}else if(opcao == 'f'){
+		//Se a opção for f imprime o tempo de espera 
+		break;
 	}
+		
+	}while(opcao != 'i' && opcao != 'r' && opcao != 'f');
+
 }
+
+
+
+
+
+
+
 
