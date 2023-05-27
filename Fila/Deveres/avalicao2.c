@@ -1,4 +1,3 @@
-//Philippe Aparecido de Lima RA:2102765 Avaliação 2
 
 #include <stdio.h>
 
@@ -18,7 +17,7 @@ typedef struct filaat
 	int tamanho;
 } Fila;
 
-//Chamada de Funções
+//Chamada de FunÃ§Ãµes
 void filainiciada(Fila *f);
 void preenchimentoFila(Fila *f, int senha, int idade);
 void removerElementosFila(Fila *f);
@@ -32,11 +31,11 @@ int main()
 	Fila prioritario, normal;
 	float tempoMedioEspera;
 	
-	//Chamada da Função filainiciada
+	//Chamada da FunÃ§Ã£o filainiciada
 	filainiciada(&prioritario);
 	filainiciada(&normal);
 	
-	//Chamada da função de leitura
+	//Chamada da funÃ§Ã£o de leitura
 	opcao(&prioritario, &normal);
 
 	//Chamada para imprimir as filas
@@ -61,27 +60,27 @@ int main()
 	return 0;
 }
 
-//Função para iniciar a minha fila
+//FunÃ§Ã£o para iniciar a minha fila
 void filainiciada(Fila *f)
 {
 	/*o inicio e o fim me ajuda a me locomover na fila onde eu insiro e onde removo algo da fila*/
 	f->iniciofila = 0;
 	f->finalfila = 0;
-	/*tamanho vai inicar em 0 me mostrando que fila está vazia e vai me ajudar contabilizando quantas
+	/*tamanho vai inicar em 0 me mostrando que fila estÃ¡ vazia e vai me ajudar contabilizando quantas
 	elementos se encontram na minha fila */
 	f->tamanho = 0;
 }
 
-//Função de preencimento da fila
+//FunÃ§Ã£o de preencimento da fila
 void preenchimentoFila(Fila *f, int senha, int idade)
-{	//Se o tamanho da fila for igual o tamanho do vetor ele está cheio
+{	//Se o tamanho da fila for igual o tamanho do vetor ele estÃ¡ cheio
 	if (f->tamanho == NUM_INFORMACAO)
 	{
 		printf("Fila se encontra Cheia\n");
 	}
 	else
 	{
-		//Chamando a Struct Informação
+		//Chamando a Struct InformaÃ§Ã£o
 		Informacao in;
 		in.senha = senha;
 		in.idade = idade;
@@ -89,12 +88,12 @@ void preenchimentoFila(Fila *f, int senha, int idade)
 		f->informacao[f->finalfila] = in;
 		//Se o final da fila chegar no final ele volta para 0
 		f->finalfila = (f->finalfila + 1) % NUM_INFORMACAO;
-		//fila no caso o final da fila ta andando até encher a fila
+		//fila no caso o final da fila ta andando atÃ© encher a fila
 		f->tamanho++;
 	}
 }
 
-//Função de Remoção da fila
+//FunÃ§Ã£o de RemoÃ§Ã£o da fila
 void removerElementosFila(Fila *f)
 {
 	//Se o tamanho da fila for igual zero a fila ta vazia
@@ -111,7 +110,7 @@ void removerElementosFila(Fila *f)
 	}
 }
 
-//Função de Chamada da fila
+//FunÃ§Ã£o de Chamada da fila
 void chamadaFila(Fila *fp, Fila *fn)
 {
 	//Se a fila prioritaria possuir pessoas vai mostras a pessoa chamada e remover ela da filao msm com o normal
@@ -127,7 +126,7 @@ void chamadaFila(Fila *fp, Fila *fn)
 	}
 }
 
-//Função de imprimir fila
+//FunÃ§Ã£o de imprimir fila
 void imprimir(Fila *f)
 {
 	int i, posicaofila;
@@ -140,7 +139,7 @@ void imprimir(Fila *f)
 	}
 }
 
-//Função tempo de espera
+//FunÃ§Ã£o tempo de espera
 float tempo(Fila *f)
 {
 	float tempo = 0;
@@ -151,7 +150,7 @@ float tempo(Fila *f)
 
 	for (i = 0; i < f->tamanho; i++)
 	{
-		//Soma do tempo acumulado com o andar da posicão
+		//Soma do tempo acumulado com o andar da posicÃ£o
 		tempo += posicaofila;
 		posicaofila = (posicaofila + 1) % NUM_INFORMACAO;
 	}
@@ -159,7 +158,7 @@ float tempo(Fila *f)
 	return tempo;
 }
 
-//Função de leitura
+//FunÃ§Ã£o de leitura
 void opcao(Fila *prioritario, Fila *normal)
 {
 	char opcao;
